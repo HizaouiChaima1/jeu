@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arène des Légendes</title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Écran d'accueil -->
+        <div id="welcome-screen" class="screen">
+            <h1>ARÈNE DES LÉGENDES</h1>
+            <div class="welcome-content">
+                <p>Un jeu de duel stratégique où chaque héros possède des pouvoirs uniques</p>
+                <button id="start-game-btn">Commencer la partie</button>
+            </div>
+        </div>
+
+        <!-- Sélection des héros -->
+        <div id="hero-selection" class="screen" style="display:none">
+            <h2>CHOISISSEZ VOTRE HÉROS</h2>
+            <div class="hero-options">
+                <div class="hero-option" data-hero="knight">
+                    <div class="hero-preview knight">♞</div>
+                    <h3>Chevalier</h3>
+                    <button class="select-hero-btn" data-hero="knight">Sélectionner</button>
+                </div>
+                
+                <div class="hero-option" data-hero="ninja">
+                    <div class="hero-preview ninja">🥷</div>
+                    <h3>Ninja</h3>
+                    <button class="select-hero-btn" data-hero="ninja">Sélectionner</button>
+                </div>
+                
+                <div class="hero-option" data-hero="wizard">
+                    <div class="hero-preview wizard">🧙</div>
+                    <h3>Sorcier</h3>
+                    <button class="select-hero-btn" data-hero="wizard">Sélectionner</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arène de combat -->
+        <div id="arena-container" class="screen" style="display:none">
+            <div class="arena-header">
+                <h2>ARÈNE DE COMBAT</h2>
+                <div id="turn-indicator">
+                    <span id="current-player">Tour du Joueur 1</span>
+                </div>
+            </div>
+            
+            <div class="arena-wrapper">
+                <div id="arena-grid-wrapper">
+                    <div id="arena-grid"></div>
+                </div>
+                
+                <div id="game-controls">
+                    <div id="action-panel">
+                        <h3>Actions disponibles</h3>
+                        <div class="action-group">
+                            <button id="move-btn" class="action-btn">Déplacement</button>
+                            <button id="fast-attack-btn" class="action-btn">Attaque Rapide</button>
+                            <button id="heavy-attack-btn" class="action-btn">Attaque Lourde</button>
+                        </div>
+                        <div class="action-group">
+                            <button id="special-btn" class="action-btn">Pouvoir Spécial</button>
+                            <button id="defend-btn" class="action-btn">Défense</button>
+                            <button id="dodge-btn" class="action-btn">Esquive</button>
+                        </div>
+                        <div class="action-group">
+                            <button id="end-turn-btn" class="end-turn-btn">Fin du tour</button>
+                        </div>
+                    </div>
+                    
+                    <div id="game-info">
+                        <div id="combat-log" class="info-box">
+                            <h3>Journal de combat</h3>
+                            <div class="log-entries"></div>
+                        </div>
+                        
+                        <div id="player-stats" class="info-box">
+                            <h3>Statistiques</h3>
+                            <div id="player1-stats" class="player-stats"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Écran de fin de jeu -->
+        <div id="end-game-screen" class="screen" style="display:none">
+            <h2>FIN DE LA PARTIE</h2>
+            <div id="winner-display"></div>
+            <button id="restart-game-btn">Nouvelle partie</button>
+        </div>
+    </div>
+
+    <script src="logique.js"></script>
+</body>
+</html>

@@ -1,0 +1,598 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'MedievalSharp', cursive;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* ===== GAME CONTAINER ===== */
+#game-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  overflow: visible;
+}
+
+/* ===== SCREENS STRUCTURE ===== */
+.screen {
+  display: none;
+  width: 100%;
+  max-width: 900px;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: rgba(44, 62, 80, 0.9);
+  border-radius: 15px;
+  border: 3px solid #f1c40f;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+  margin: 0 auto;
+}
+
+/* ===== ARENA GRID - FIXED SOLUTION ===== */
+#arena-container {
+  display: none;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+#arena-grid-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+}
+
+/* RESET ULTIME */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* STRUCTURE DE LA GRILLE */
+#arena-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: visible;
+  padding: 20px;
+}
+
+#arena-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  gap: 2px;
+  width: 560px; /* 7x80px */
+  height: 560px;
+  background-color: #333;
+  border: 3px solid gold;
+  position: relative;
+  overflow: visible;
+}
+
+.cell {
+  background-color: #e0e0e0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+}
+/* Style du panel d'actions */
+#action-panel {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #f1c40f;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.action-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.action-btn {
+  background: linear-gradient(to bottom, #3498db, #2980b9);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 120px;
+}
+
+.action-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Styles spécifiques pour chaque bouton */
+#move-btn { background: linear-gradient(to bottom, #2ecc71, #27ae60); }
+#fast-attack-btn { background: linear-gradient(to bottom, #e67e22, #d35400); }
+#heavy-attack-btn { background: linear-gradient(to bottom, #e74c3c, #c0392b); }
+#special-btn { background: linear-gradient(to bottom, #9b59b6, #8e44ad); }
+#defend-btn { background: linear-gradient(to bottom, #3498db, #2980b9); }
+#dodge-btn { background: linear-gradient(to bottom, #95a5a6, #7f8c8d); }
+#end-turn-btn { 
+  background: linear-gradient(to bottom, #f1c40f, #f39c12);
+  color: #000;
+  font-weight: bold;
+}
+#game-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  overflow: visible; /* Crucial */
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: rgba(44, 62, 80, 0.9);
+  border-radius: 15px;
+  border: 3px solid #f1c40f;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Écran d'accueil */
+#welcome-screen h1 {
+  font-size: 3.5rem;
+  color: #f1c40f;
+  text-shadow: 3px 3px 0 #000;
+  margin-bottom: 1rem;
+}
+
+.welcome-content {
+  text-align: center;
+  padding: 2rem;
+}
+
+#start-game-btn {
+  background: linear-gradient(135deg, #f1c40f 0%, #e67e22 100%);
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 2rem;
+}
+
+#start-game-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Sélection des héros */
+#hero-selection h2 {
+  font-size: 2.5rem;
+  color: #f1c40f;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.hero-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 2rem;
+}
+
+.hero-option {
+  padding: 1.5rem;
+  border: 3px solid #f1c40f;
+  border-radius: 10px;
+  width: 250px;
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.hero-option:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.hero-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  border: 3px solid white;
+}
+
+.knight { background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%); }
+.ninja { background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); }
+.wizard { background: linear-gradient(135deg, #6A0DAD 0%, #9b59b6 100%); }
+
+.hero-stats {
+  text-align: left;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.special-power {
+  color: #f1c40f;
+  font-weight: bold;
+}
+
+.select-hero-btn {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+.select-hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Arène de combat */
+.arena-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.arena-header h2 {
+  font-size: 2.5rem;
+  color: #f1c40f;
+  margin: 0;
+  text-shadow: 2px 2px 0 #000;
+}
+
+#turn-indicator {
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+  color: #f1c40f;
+  font-weight: bold;
+}
+#arena-container {
+  width: 100%;
+  padding: 10px; /* Réduire si nécessaire */
+  box-sizing: border-box;
+  overflow: visible; /* Essentiel */
+}
+
+/* Conteneur de la grille */
+.arena-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  margin-top: 0; /* Enlève les marges hautes */
+  padding-top: 0;
+}
+
+#arena-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  gap: 2px;
+  width: calc(100% - 20px);
+  max-width: 500px;
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+  border: 3px solid #f1c40f;
+  background: #333;
+  position: relative;
+  top: 0; /* S'assure qu'on part du haut */
+}
+
+.cell {
+  background-color: #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 3px;
+}
+
+.cell:hover {
+  background-color: #c9c9c9;
+}
+
+.obstacle {
+  background-color: #5a3921 !important;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234a331f"/><rect x="15" y="15" width="70" height="70" fill="%236b4f3a" rx="5" ry="5"/></svg>') !important;
+}
+
+.bonus {
+  background-color: #f8f8d0 !important;
+  animation: pulse 2s infinite;
+}
+
+.hero {
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s;
+  border: 2px solid white;
+}
+
+.health-bar {
+  position: absolute;
+  bottom: -12px;
+  left: 5%;
+  width: 90%;
+  height: 8px;
+  background-color: #444;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.health-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+  transition: width 0.3s;
+}
+
+/* Panel d'actions */
+#game-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+#action-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  border: 2px solid #f1c40f;
+}
+
+.action-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.action-btn {
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  min-width: 160px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+#move-btn { background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); }
+#fast-attack-btn { background: linear-gradient(135deg, #e67e22 0%, #d35400 100%); }
+#heavy-attack-btn { background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); }
+#special-btn { background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); }
+#defend-btn { background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); }
+#dodge-btn { background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%); }
+
+.end-turn-btn {
+  background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+  color: #000;
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  min-width: 200px;
+}
+
+/* Informations de jeu */
+#game-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.info-box {
+  flex: 1;
+  min-width: 250px;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  border: 2px solid #bdc3c7;
+}
+
+.info-box h3 {
+  color: #f1c40f;
+  margin-top: 0;
+  border-bottom: 1px solid #bdc3c7;
+  padding-bottom: 0.5rem;
+}
+
+.player-stats {
+  padding: 0.5rem 0;
+}
+
+.player-stats h4 {
+  margin: 0.5rem 0;
+  color: #f1c40f;
+}
+
+#combat-log {
+  min-height: 150px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.log-entries {
+  font-size: 0.9rem;
+}
+
+.log-entries p {
+  margin: 0.5rem 0;
+  padding: 0.3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Écran de fin de jeu */
+#end-game-screen {
+  text-align: center;
+  padding: 2rem;
+}
+
+#end-game-screen h2 {
+  font-size: 3rem;
+  color: #f1c40f;
+  margin-bottom: 1rem;
+  text-shadow: 3px 3px 0 #000;
+}
+
+#winner-display {
+  font-size: 2rem;
+  margin: 2rem 0;
+  color: white;
+  text-shadow: 2px 2px 0 #000;
+}
+
+#restart-game-btn {
+  background: linear-gradient(135deg, #f1c40f 0%, #e67e22 100%);
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#restart-game-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .screen {
+      padding: 1rem;
+      width: 95%;
+  }
+
+  .hero-options {
+      flex-direction: column;
+  }
+
+  .hero-option {
+      width: 100%;
+      max-width: 300px;
+  }
+
+  .action-btn {
+      min-width: 140px;
+      padding: 0.8rem 1rem;
+  }
+
+  #game-info {
+      flex-direction: column;
+  }
+
+  .info-box {
+      width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  #welcome-screen h1 {
+      font-size: 2.5rem;
+  }
+
+  .hero-preview {
+      width: 80px;
+      height: 80px;
+  }
+
+  .action-group {
+      flex-direction: column;
+  }
+
+  .action-btn {
+      width: 100%;
+  }
+}
